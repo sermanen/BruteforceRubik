@@ -30,12 +30,12 @@ Cube::Cube(bool scrambled) {
         }
     }
 
-    int m=0;
-    for (int sticker=0; sticker<9; ++sticker) {
-        for (int side=0; side<6; ++side) {
-            cubies[sticker][side]=m++;
-        }
-    }
+    //int m=0;
+    //for (int sticker=0; sticker<9; ++sticker) {
+    //    for (int side=0; side<6; ++side) {
+    //        cubies[sticker][side]=m++;
+    //    }
+    //}
 
 
     if (scrambled) {
@@ -117,13 +117,19 @@ void Cube::outputGrid()
     std::string mask[9*6];
     char string[5];
 
-    for (int m=0,i=0;i<9;++i) {
-        for (int j=0;j<6;++j) {
-            std::stringstream ss;
-            ss<<cmask[j]<<i;
-            mask[m++]=ss.str();
-        }
+    //for (int m=0,i=0;i<9;++i) {
+    //    for (int j=0;j<6;++j) {
+    //        std::stringstream ss;
+    //        ss<<cmask[j]<<i;
+    //        mask[m++]=ss.str();
+    //    }
+    //}
+    for (int m=0,j=0;j<6;++j) {
+        std::stringstream ss;
+        ss<<cmask[j]<<" ";
+        mask[m++]=ss.str();
     }
+
 
     for(int i=0;i<3;i++)std::cout<<"    ";
     for(int i=0;i<3;i++)std::cout<<"["<<mask[cubies[i+0][es_Yellow]]<<"]";

@@ -10,7 +10,35 @@
 
 std::string format(std::string);
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
+
+    TMyCube Cube_orig;
+    TMyCube Cube_target;
+
+    TMyCube::Emove array[30];
+    int cnt=0;
+    array[cnt++]=TMyCube::es_R;
+    array[cnt++]=TMyCube::es_U;
+    array[cnt++]=TMyCube::es_B;
+    array[cnt++]=TMyCube::es_L;
+    array[cnt++]=TMyCube::es_Dant;
+    array[cnt++]=TMyCube::es_Fant;
+    array[cnt++]=TMyCube::es_U;
+    array[cnt++]=TMyCube::es_B;
+
+    Cube_target.moves(array,cnt);
+
+
+
+    Cube_target.outputGrid();
+
+    Bruteforce bruteforce(Cube_orig,Cube_target);
+    bool find = bruteforce.move2(8);
+
+}
+
+int main2(int argc, char **argv) {
 
 /*
     Cube myCube(false);
@@ -51,7 +79,7 @@ int main(int argc, char **argv) {
     Cube_target.outputGrid();
 
     //Bruteforce bruteforce(Cube_orig,Cube_target);
-    //bool find = bruteforce.move(8);
+    //bool find = bruteforce.move2(8);
 
     std::cout << "TMyCube:" << std::endl;
 

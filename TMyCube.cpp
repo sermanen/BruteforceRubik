@@ -2,6 +2,15 @@
 #include <iostream>
 #include <sstream>      // std::stringstream
 
+
+TMyCube::TMyCube(const TMyCube &c)
+{
+    for (int sticker=0; sticker<9; sticker++) {
+        for (int side=0; side<6; side++) {
+            cubies[sticker][side] = c.cubies[sticker][side];
+        }
+    }
+}
 TMyCube::TMyCube()
 {
     int m=0;
@@ -12,6 +21,57 @@ TMyCube::TMyCube()
         }
     }
 }
+
+std::string TMyCube::format(Emove *array, int count) {
+    std::string formatted;
+
+    for(int i=0;i<count;i++){
+        switch(array[i]){
+        case es_R:
+            formatted+="R ";
+            break;
+        case es_L:
+            formatted+="L ";
+            break;
+        case es_U:
+            formatted+="U ";
+            break;
+        case es_D:
+            formatted+="D ";
+            break;
+        case es_F:
+            formatted+="F ";
+            break;
+        case es_B:
+            formatted+="B ";
+            break;
+        case es_Rant:
+            formatted+="R' ";
+            break;
+        case es_Lant:
+            formatted+="L' ";
+            break;
+        case es_Uant:
+            formatted+="U' ";
+            break;
+        case es_Dant:
+            formatted+="D' ";
+            break;
+        case es_Fant:
+            formatted+="F' ";
+            break;
+        case es_Bant:
+            formatted+="B' ";
+            break;
+        default:
+            break;
+        }
+    }
+
+    return formatted;
+
+}
+
 bool TMyCube::compare(const TMyCube&c1,const TMyCube&c2)
 {
     for (int sticker=0; sticker<9; sticker++) {
