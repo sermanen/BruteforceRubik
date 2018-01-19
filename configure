@@ -1,0 +1,26 @@
+#!/bin/bash
+case "$1" in
+  --clean | -c) # CLEAN PROJECT
+    make clean
+    rm -f ./Makefile
+    rm -f ./*~
+    rm -f ./*.exe
+    ;;
+  '') # default
+    qmake -o Makefile *.pro
+    echo "Configure complited..."
+    echo "make in process..."
+    rm -f ./*.exe
+    make
+    echo "Install complited!"
+    ;;
+  --help | -h | *) # HELP
+    echo ""
+    echo "This program uses Qt 3.x library!"
+    echo "Usage: ./configure [command]"
+    echo "commands:"
+    echo "--help  (-h)      This help"
+    echo "--clean (-c)      Clear all compiled files"
+    echo "(default)         Configure and install the project"
+    ;;
+esac
